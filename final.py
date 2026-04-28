@@ -32,3 +32,30 @@ class NumberGuessingGame:
             print("Congratulations! You guessed the correct number!")
             return True
         return False
+
+    def play(self):
+        # Main game loop
+        print("\nWelcome to the Number Guessing Game")
+        print(f"I have selected a number between {self.low} and {self.high}.")
+        print("Try to guess it!\n")
+        while True:
+            guess = self.get_valid_guess()
+            self.attempts += 1
+            self.guess_history.append(guess)
+            if self.check_guess(guess):
+                break
+        self.display_summary()
+
+    def display_summary(self):
+        # Displays game results
+        print("\nGame Summary:")
+        print(f"Total attempts: {self.attempts}")
+        print(f"Your guesses: {self.guess_history}")
+
+def main():
+    #Entry point of the game
+    game = NumberGuessingGame()
+    game.play()
+
+if __name__ == "__main__":
+    main()
